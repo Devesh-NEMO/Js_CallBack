@@ -68,5 +68,29 @@ console.log("start")
 setTimeout(function abc(){
     console.log("setTimeOUt")
 },5000);
-abc();
 console.log("End")
+console.log("hello world")
+
+function greetUser(name, callback) {
+  console.log("Hi " + name);
+  callback();
+}
+
+function sayBye() {
+  console.log("Bye!");
+}
+
+greetUser("Kael", sayBye);
+
+
+function downloadFile(url, callback) {
+  console.log("Downloading from", url);
+  setTimeout(() => {
+    console.log("Download complete!");
+    callback(); // call the callback after download
+  }, 2000);
+}
+
+downloadFile("https://example.com/video", () => {
+  console.log("Now playing the video...");
+});
