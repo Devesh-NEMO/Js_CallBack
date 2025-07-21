@@ -94,3 +94,63 @@ function downloadFile(url, callback) {
 downloadFile("https://example.com/video", () => {
   console.log("Now playing the video...");
 });
+
+
+//----------- promises
+
+const myPromise = new Promise((resolve, reject) => {
+  const success = true;
+
+  if (success) {
+    resolve("✅ Promise resolved!");
+  } else {
+    reject("❌ Promise rejected!");
+  }
+});
+
+// Using `.then()` and `.catch()`
+myPromise
+  .then((message) => {
+    console.log(message); // ✅ Promise resolved!
+  })
+  .catch((error) => {
+    console.error(error); // ❌ Promise rejected!
+  });
+
+
+  // setTimeOut
+
+  function fetchData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("📦 Data loaded!");
+    }, 2000);
+  });
+}
+
+fetchData().then((data) => {
+  console.log(data); // after 2s: 📦 Data loaded!
+});
+
+
+// -- Fake API
+
+function getUserData(username) {
+  return new Promise((resolve, reject) => {
+    if (!username) {
+      reject("Username is required");
+    } else {
+      setTimeout(() => {
+        resolve({ name: username, id: 1 });
+      }, 1500);
+    }
+  });
+}
+
+getUserData("Kael")
+  .then((user) => {
+    console.log("User:", user);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
