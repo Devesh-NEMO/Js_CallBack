@@ -108,13 +108,14 @@ const myPromise = new Promise((resolve, reject) => {
   }
 });
 
-// Using `.then()` and `.catch()`
+
+
 myPromise
   .then((message) => {
-    console.log(message); // ✅ Promise resolved!
+    console.log(message);
   })
   .catch((error) => {
-    console.error(error); // ❌ Promise rejected!
+    console.error(error); 
   });
 
 
@@ -129,7 +130,7 @@ myPromise
 }
 
 fetchData().then((data) => {
-  console.log(data); // after 2s: 📦 Data loaded!
+  console.log(data); 
 });
 
 
@@ -154,3 +155,26 @@ getUserData("Kael")
   .catch((err) => {
     console.error(err);
   });
+
+
+
+  /* =========== MAP / FILTER / REDUCE ============*/
+
+  const users = [
+  { firstName: "Kael", lastName: "Knight", age: 22 },
+  { firstName: "Rin", lastName: "Sato", age: 24 },
+  { firstName: "Void", lastName: "Walker", age: 22 },
+  { firstName: "Luna", lastName: "Astra", age: 25 },
+  { firstName: "Nova", lastName: "Ray", age: 24 },
+  { firstName: "Zane", lastName: "Frost", age: 26 },
+];
+
+const output1 = users.reduce((acc, user) => {
+  if (user.age <= 22) {
+    acc.push(user.firstName);
+  }
+  return acc;
+}, []);
+
+console.log(output1); 
+// Output: ["Kael", "Void"]
